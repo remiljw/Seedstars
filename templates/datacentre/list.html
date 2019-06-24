@@ -1,0 +1,69 @@
+
+
+<style type="text/css"> 
+    body{
+        background-color: orange;
+    }
+table{
+    width: 70%;
+    margin: auto;
+    border: 2px solid black;
+    background-color: brown;
+
+}
+th,td,tr{
+    border: 0.5px solid black;
+    text-align: center;
+}
+h2{
+        text-transform: uppercase;
+        text-align: center;
+        background-color: whitesmoke;
+        width: 29%;
+        margin: 20px auto;
+    }
+</style>
+
+<h2>DATA LIST</h2>
+ <table>
+    <tr>
+        <td>S/N</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Sex</td>
+        <td>Email</td>
+    </tr>
+     
+        {% if men %}
+          {%for name in men %}
+          <tr>
+             <td>{{ name.id }}</td>
+           <td>
+          {{ name.first_name }}</td>
+                 <td> {{ name.last_name }}</td>
+                <td>{{ name.gender }}</td>
+                <td>{{ name.email }}</td>
+                   
+                     {% endfor %}
+                 {% endif %}
+          </tr>
+       <tr>
+        {% if women %}
+          {%for name in women %}
+             <td>{{ name.id }}</td>
+           <td>
+          {{ name.first_name }}</td>
+                 <td> {{ name.last_name }}</td>
+                <td>{{ name.gender }}</td>
+                <td>{{ name.email }}</td>
+            </tr>
+                   
+                     {% endfor %}
+                 {% endif %}
+        
+       
+     
+    </table>
+
+
+  

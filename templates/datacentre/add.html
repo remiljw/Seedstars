@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> ADD DATA</title>
+</head>
+<style type="text/css">
+body{
+    background-color: orange;
+}
+    form{
+        width: 30%;
+        height: inherit;
+        margin: 60px auto;
+        background-color: brown;
+        padding: 15px;
+        border:1px dashed white;
+        align-content: center;
+
+    }
+    button{
+        background-color: orange;
+        border: 0px;
+        margin: auto ;
+        padding: 5px;
+        float: right;
+    }
+    button:hover{
+        background-color: blue;
+    }
+    input{
+        border-radius: 10px;
+        width:95%;
+        align-self: center;
+    }
+    
+    h2{
+        text-transform: uppercase;
+        text-align: center;
+        background-color: whitesmoke;
+        width: 29%;
+        margin: auto;
+    }
+
+</style>
+<body>
+    {% block content%}
+<h2>DATA CENTRE</h2>
+<form method="post" action="">
+    {% csrf_token %}
+    {% for field in form %}
+    <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}<br>
+        <small>{{field.help_text}}</small>
+        {% endif %}
+        {% for error in field.errors %}<br>
+        <p>{{ error }}</p>
+        {% endfor %}
+    </p>
+    {% endfor %}
+    {% if error %}
+	<p style='color: red;'>Your have been enrolled Previously</p>
+	{% endif %}
+	{% if success %}
+    <p style='color: green;'>Your Data has been Enrolled</p> <span><a href="/list">Confirm Here</a></span>
+    {% endif %}
+    <button type="submit">ADD</button>
+</form>
+{% endblock %}
+</body>
+</html>
